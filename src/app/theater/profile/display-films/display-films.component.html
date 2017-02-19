@@ -1,3 +1,7 @@
-<p>
-  display-films works!
-</p>
+<app-add-films (data)="films.push($event)"></app-add-films>
+<ul>
+	<li *ngFor="let film of films | async">
+		{{film.name}} | <app-hall-info [hallKey]="film.hall"></app-hall-info> | <app-show-time [filmKey]="film.$key"></app-show-time> | <app-add-time></app-add-time>
+		<button (click)="films.remove(film.$key)">X</button>
+	</li>
+</ul>

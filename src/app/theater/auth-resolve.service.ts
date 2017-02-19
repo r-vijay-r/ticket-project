@@ -31,18 +31,24 @@ export class AuthResolveService {
   	return this.auth.asObservable();
   }
   allTheaters(){
-  	return this.data.databaseList("theaterInfo/"+this.data.userDetails().uid);
+    return this.data.databaseObject("theaterInfo/"+this.data.userDetails().uid);
   }
-  allHalls(theaterKey){
-  	return this.data.databaseList("hallsInfo/"+this.data.userDetails().uid,{orderByChild:"theaterKey",equalTo:theaterKey});
+  allHalls(){
+      return this.data.databaseList("hallsInfo/"+this.data.userDetails().uid,{orderByChild:"name"});
   }
-  allFilms(hallKey){
-  	return this.data.databaseList("filmsInfo/"+this.data.userDetails().uid,{orderByChild:"hallKey",equalTo:hallKey});
+  getHall(hallKey){
+      return this.data.databaseObject("hallsInfo/"+this.data.userDetails().uid+"/"+hallKey);
+  }
+  allFilms(){
+  	return this.data.databaseList("filmsInfo/"+this.data.userDetails().uid,{orderByChild:"name"});
   }
   allTimes(filmKey){
   	return this.data.databaseList("timeInfo/"+this.data.userDetails().uid,{orderByChild:"filmKey",equalTo:filmKey});
   }
   allTickets(timeKey){
-  	return this.data.databaseList("ticketsInfo/"+this.data.userDetails().uid,{orderByChild:"timeKey",equalTo:timeKey});
+  	return this.data.databaseObject("ticketsInfo/"+this.data.userDetails().uid+"/"+timeKey);
+  }
+  get userdetails(){
+    return this.data.userDetails();
   }
 }

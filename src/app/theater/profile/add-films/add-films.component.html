@@ -1,0 +1,24 @@
+<form novalidate [formGroup]="form" >
+	<div>
+		<label for="name">Film Name </label><input type="text" formControlName="name" name="name">
+	</div>
+	<div>
+		<label for="hall">Select Hall</label>
+		<select type="number" formControlName="hall" name="hall">
+			<option value="">--Select hall--</option>
+			<option *ngFor="let hall of halls | async" value="{{hall.$key}}">{{hall.name}}</option>
+		</select>
+	</div>
+	<div>
+		<label for="startingTime">Starting Time </label><input type="time" formControlName="startingTime" name="startingTime">
+	</div>
+	<div>
+		<label for="endingTime">Starting Time </label><input type="time" formControlName="endingTime" name="endingTime">
+	</div>
+	<div>
+		<label for="ticketFare">Ticket Fare </label><input type="number" formControlName="ticketFare" name="ticketFare">
+	</div>
+	<div>
+		<button (click)="submit()" [disabled]="form.invalid">Add</button>
+	</div>
+</form>

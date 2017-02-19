@@ -1,3 +1,20 @@
-<p>
-  add-halls works!
-</p>
+<form novalidate [formGroup]="form" >
+	<div>
+		<label for="name">Hall Name </label><input type="text" formControlName="name" name="name">
+	</div>
+	<div>
+		<label for="totalSeats">Total Seats Available </label><input type="number" formControlName="totalSeats" name="totalSeats">
+	</div>
+	<div>
+		<label for="type">Select hall type </label>
+		<select formControlName="type" name="type">
+			<option value="">--Select hall type--</option>
+			<option value="Non-A/C">Non-A/C</option>
+			<option value="A/C">A/C</option>
+			<option value="Centralized A/C">Centralized A/C</option>
+		</select>
+	</div>
+	<div>
+		<button (click)="submit()" [disabled]="form.invalid">Add</button>
+	</div>
+</form>

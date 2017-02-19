@@ -1,5 +1,1 @@
-<p>
-  login works!
-</p>
-
-<button (click)="submit()">ok</button>
+<app-register-form [userdata]="user.userdetails" (data)="submit($event)"></app-register-form>

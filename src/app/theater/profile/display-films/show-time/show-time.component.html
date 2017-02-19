@@ -1,0 +1,4 @@
+<div *ngFor="let time of timeList | async">
+	{{time.startTime}} - {{time.endTime}} Fare : {{time.fare}}
+	<app-tickets [timeKey]="time.$key"></app-tickets>
+</div>

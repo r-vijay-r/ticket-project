@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthResolveService } from'../../auth-resolve.service';
 
 @Component({
   selector: 'app-display-films',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayFilmsComponent implements OnInit {
 
-  constructor() { }
+	films;
+	constructor(private authUser:AuthResolveService) {
+		this.films=this.authUser.allFilms();
+	}
 
-  ngOnInit() {
-  }
-  submit(){
-  	
-  }
+	ngOnInit() {
+	}
 
 }

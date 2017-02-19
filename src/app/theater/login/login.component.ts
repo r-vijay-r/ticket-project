@@ -7,11 +7,12 @@ import { AuthResolveService } from '../auth-resolve.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
- constructor(private authenticate:AuthResolveService) { 
+ constructor(private user:AuthResolveService) { 
   }
   ngOnInit() {
   }
-  submit(){
+  submit($event){
+  	this.user.allTheaters().update($event);
   }
 
 }

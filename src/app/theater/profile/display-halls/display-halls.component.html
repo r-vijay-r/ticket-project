@@ -1,4 +1,7 @@
-<app-add-halls></app-add-halls>
-<p>
-  display-halls works!
-</p>
+<app-add-halls (data)="halls.push($event)"></app-add-halls>
+<ul>
+	<li *ngFor="let hall of halls | async" > 
+		{{hall.name}} | Total seats : {{hall.totalSeats}} | Type : {{hall.type}}
+		<button (click)="halls.remove(hall.$key)">X</button>
+	</li>
+</ul>

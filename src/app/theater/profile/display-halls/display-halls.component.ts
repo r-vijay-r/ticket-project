@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthResolveService } from'../../auth-resolve.service';
 
 @Component({
   selector: 'app-display-halls',
@@ -6,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./display-halls.component.css']
 })
 export class DisplayHallsComponent implements OnInit {
+	halls;
+	constructor(private authUser:AuthResolveService) {
+		this.halls=authUser.allHalls();
+	}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-  submit(){
-  	
-  }
+	ngOnInit() {
+	}
+	submit(){
+		
+	}
 
 }

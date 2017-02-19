@@ -7,28 +7,31 @@ export class DataResolveService {
 		"name":string,
 		"pic":string,
 		"email":string,
-		"uid":string,
+    "uid":string,
+		"mobile":string,
 		"newUser":boolean
 	};
   constructor(private af:AngularFire,private navigate:RouteResolveService) { }
   setUserData(user){
-    this.databaseObject("theater/"+user.auth.uid).first().subscribe(data=>{
-      //console.log(data);
+    this.databaseObject("theaterInfo/"+user.auth.uid).subscribe(data=>{
+      //console.log(data.$exists());
   		if(data.$exists()) {
   			this.user={
 		  		"name":data.name,
 		  		"pic":data.pic,
 		  		"email":data.email,
-		  		"uid":user.auth.uid,
-  				"newUser":false
-  			}
-  			this.navigate.goTo(['theater','profile']);
-  		}else{
-  			this.user={
-		  		"name":user.auth.displayName,
-		  		"pic":user.auth.photoURL,
-		  		"email":user.auth.email,
-		  		"uid":user.auth.uid,
+          "uid":user.auth.uid,
+          "mobile":data.mobile,
+          "newUser":false
+        }
+        this.navigate.goTo(['theater','profile']);
+      }else{
+        this.user={
+          "name":user.auth.displayName,
+          "pic":user.auth.photoURL,
+          "email":user.auth.email,
+          "uid":user.auth.uid,
+		  		"mobile":'',
 		  		"newUser":true
 		  	};
   			this.navigate.goTo(['theater','register']);
