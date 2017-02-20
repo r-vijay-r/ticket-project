@@ -6,7 +6,7 @@ import { AuthResolveService } from '../../../auth-resolve.service';
   styleUrls: ['./tickets.component.css']
 })
 export class TicketsComponent implements OnInit {
-  @Input('timKey') set getTimeKey(timeKey){
+  @Input('timeKey') set getTimeKey(timeKey){
   	this.tickets=this.auth.allTickets(timeKey);
   };
   tickets;
